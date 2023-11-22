@@ -4,7 +4,7 @@ const apiMeteo = fetch(url)
                         console.log(response);
                         const json = await response.json();
                         console.log(json);
-                        const temperature = json.main.temp ;
+                        const temperature = (json.main.temp)-273.15 ;
                         const nomVille = json.name ;
                         const latitude = json.coord.lat ;
                         const longitude = json.coord.lon ;
@@ -13,7 +13,7 @@ const apiMeteo = fetch(url)
                     para1.textContent = nomVille ;
                     const para2 = document.createElement('p');
                     document.body.appendChild(para2);
-                    para2.textContent = "Température : "+temperature+ " °F" ;
+                    para2.textContent = "Température : "+temperature.toFixed(2)+ " °C" ;
                     const para3 = document.createElement('p');
                     document.body.appendChild(para3);
                     para3.textContent = "Coordonnées : "+latitude+" en lat. et "+longitude+" en long." ;
